@@ -1,16 +1,20 @@
+
+ 
 document.addEventListener("DOMContentLoaded", async () => {
-    const currentPage = window.location.pathname.split("/").pop();
-    
-    // 🔹 Obtener el parámetro "contactId" de la URL
     const urlParams = new URLSearchParams(window.location.search);
-    const contactId = urlParams.get("contactId") || "c38d46fd-e405-491a-a508-01bb9760eecc"; // Valor por defecto si no hay parámetro
+    const storedContactId = sessionStorage.getItem("contactId");
+    // 🔹 Obtener el parámetro "contactId" de la URL
+    let contactId = urlParams.get("contactId") || storedContactId || "c38d46fd-e405-491a-a508-01bb9760eecc"; 
+    sessionStorage.setItem("contactId", contactId); // Guardar en sessionStorage
+
+    console.log("📌 Contact ID global:", contactId);
 
     try {
         showLoading(); // 🔄 Mostrar el spinner antes de cargar
 
         if (currentPage === "formulario.html") {
-            initializeForm(contactId); // 🔹 Pasar el contactId a la función
-            
+           
+            initializeForm(); // 🔹 Pasar el contactId a la función
             setTimeout(() => {
                 initializeDropzone(); // ⏳ Asegurar que los elementos existen antes de inicializar el dropzone
             }, 500); 
@@ -22,19 +26,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-
+ 
 // **Inicializar el formulario y cargar el contacto**
-function initializeForm(contactId) {
-    console.log("✅ Inicializando formulario...");
-
-    const contactIdField = document.getElementById("contactId");
-    if (!contactIdField) {
-        console.error("❌ Error: No se encontró el formulario en el DOM.");
-        return;
-    }
-
-    
-    fetchContact(contactId);
+function initializeForm() {
+  
+    let contactId = sessionStorage.getItem("contactId");
+     
+    // Esperar a que el formulario exista en el DOM
+    const checkForm = setInterval(() => {
+        
+        console.log("contactIdField:", contactId);
+        if (contactId) {
+            clearInterval(checkForm); // Detener la espera
+            console.log("🎯 Formulario encontrado, inicializando...");
+ 
+            // Llamar a la función para obtener datos
+            fetchContact(contactId);
+        }
+    }, 100); // Verifica cada 100ms hasta que el formulario aparezca
 }
 
 // **Función para mostrar alertas bonitas**
@@ -321,10 +330,11 @@ function loadPage(page) {
         .then(response => response.text())
         .then(data => {
             document.getElementById("content").innerHTML = data;
-
+             
             // ✅ Llamar funciones adicionales según la página cargada
             if (page === "formulario.html") {
-                initializeForm();
+                console.log("Contact ID initializeForm 2:", contactId);
+                initializeForm(contactId);
                 initializeDropzone();
             }
 
