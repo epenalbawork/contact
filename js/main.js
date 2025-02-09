@@ -96,7 +96,7 @@ function setFormValues(contactId, contact) {
             console.warn(`⚠️ Advertencia: No se encontró el elemento con ID "${id}"`);
         }
     }
-    alert(contact.GivenName);
+    
     setValue("contactId", contactId);
     setValue("givenName", contact.givenName);
     setValue("jobTitle", contact.jobTitle);
