@@ -1,5 +1,5 @@
-const BASE_URL = "https://creatioapi-hsgvgfdrcxbjetds.canadacentral-01.azurewebsites.net/Contact";  // Reemplaza con la URL de producción si es necesario
-
+// const BASE_URL = "https://creatioapi-hsgvgfdrcxbjetds.canadacentral-01.azurewebsites.net/Contact";  // Reemplaza con la URL de producción si es necesario
+const BASE_URL = "https://localhost:7123/Contact"; 
 /**
  * Obtiene datos de un contacto por ID
  */

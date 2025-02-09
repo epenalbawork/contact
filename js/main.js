@@ -96,9 +96,9 @@ function setFormValues(contactId, contact) {
             console.warn(`⚠️ Advertencia: No se encontró el elemento con ID "${id}"`);
         }
     }
-
+    alert(contact.GivenName);
     setValue("contactId", contactId);
-    setValue("GivenName", contact.GivenName);
+    setValue("givenName", contact.givenName);
     setValue("jobTitle", contact.jobTitle);
     setValue("birthDate", contact.birthDate ? contact.birthDate.split("T")[0] : "");
     setValue("phone", contact.phone);
@@ -206,7 +206,7 @@ async function updateContact() {
 
         const updatedContact = {
             Id: contactId,
-            GivenName: document.getElementById("GivenName").value || contact.name,
+            givenName: document.getElementById("givenName").value || contact.name,
             JobTitle: document.getElementById("jobTitle").value || contact.jobTitle,
             BirthDate: formattedBirthDate,
             Phone: document.getElementById("phone").value || contact.phone,
@@ -252,7 +252,7 @@ async function confirmUpdateContact() {
         // Obtener los valores editados en el formulario
         const updatedContact = {
             Email: document.getElementById("email").value || "",
-            GivenName: document.getElementById("GivenName").value || "",
+            GivenName: document.getElementById("givenName").value || "",
             "Puesto de Trabajo": document.getElementById("jobTitle").value || "",
             "Fecha de Nacimiento": document.getElementById("birthDate").value || "",
             Teléfono: document.getElementById("phone").value || "",
