@@ -1,25 +1,30 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const currentPage = window.location.pathname.split("/").pop();
-    const contactId = "c38d46fd-e405-491a-a508-01bb9760eecc"; // ID predeterminado
+    
+    // 🔹 Obtener el parámetro "contactId" de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const contactId = urlParams.get("contactId") || "c38d46fd-e405-491a-a508-01bb9760eecc"; // Valor por defecto si no hay parámetro
 
     try {
-        showLoading(); // Mostrar el spinner antes de cargar
+        showLoading(); // 🔄 Mostrar el spinner antes de cargar
 
         if (currentPage === "formulario.html") {
-            initializeForm();
+            initializeForm(contactId); // 🔹 Pasar el contactId a la función
+            
             setTimeout(() => {
-                initializeDropzone(); // Asegurar que los elementos existen antes de inicializar el dropzone
-            }, 500); // ⏳ Esperar un poco para asegurarse de que la página cargó
+                initializeDropzone(); // ⏳ Asegurar que los elementos existen antes de inicializar el dropzone
+            }, 500); 
         }
     } catch (error) {
         console.error("❌ Error al cargar el contacto automáticamente:", error);
     } finally {
-        hideLoading(); // Ocultar el spinner
+        hideLoading(); // 🔹 Ocultar el spinner
     }
 });
 
+
 // **Inicializar el formulario y cargar el contacto**
-function initializeForm() {
+function initializeForm(contactId) {
     console.log("✅ Inicializando formulario...");
 
     const contactIdField = document.getElementById("contactId");
@@ -28,8 +33,7 @@ function initializeForm() {
         return;
     }
 
-    // Obtener contacto si estamos en formulario.html
-    const contactId = "c38d46fd-e405-491a-a508-01bb9760eecc";
+    
     fetchContact(contactId);
 }
 
