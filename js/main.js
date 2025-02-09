@@ -98,7 +98,7 @@ function setFormValues(contactId, contact) {
     }
 
     setValue("contactId", contactId);
-    setValue("name", contact.name);
+    setValue("GivenName", contact.GivenName);
     setValue("jobTitle", contact.jobTitle);
     setValue("birthDate", contact.birthDate ? contact.birthDate.split("T")[0] : "");
     setValue("phone", contact.phone);
@@ -206,7 +206,7 @@ async function updateContact() {
 
         const updatedContact = {
             Id: contactId,
-            Name: document.getElementById("name").value || contact.name,
+            GivenName: document.getElementById("GivenName").value || contact.name,
             JobTitle: document.getElementById("jobTitle").value || contact.jobTitle,
             BirthDate: formattedBirthDate,
             Phone: document.getElementById("phone").value || contact.phone,
@@ -252,7 +252,7 @@ async function confirmUpdateContact() {
         // Obtener los valores editados en el formulario
         const updatedContact = {
             Email: document.getElementById("email").value || "",
-            Nombre: document.getElementById("name").value || "",
+            GivenName: document.getElementById("GivenName").value || "",
             "Puesto de Trabajo": document.getElementById("jobTitle").value || "",
             "Fecha de Nacimiento": document.getElementById("birthDate").value || "",
             Teléfono: document.getElementById("phone").value || "",
