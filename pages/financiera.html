@@ -1,0 +1,22 @@
+<div id="infoFinanciera" class="bg-white p-6 rounded-lg shadow-md h-full mt-5">
+    <h1 class="text-lg font-semibold text-gray-800 mb-4">Información Financiera</h1>
+    <hr class="mb-4">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="relative">
+            <label class="block text-sm font-medium text-gray-700">Ingreso Mensual</label>
+            <input type="text" id="income" class="pl-3 w-full p-3 text-sm border rounded-md">
+        </div>
+
+        <div class="relative">
+            <label class="block text-sm font-medium text-gray-700">Tarjeta de Crédito</label>
+            <input type="text" id="creditCard" class="pl-3 w-full p-3 text-sm border rounded-md">
+        </div>
+    </div>
+
+    <button type="button" onclick="updateFinancialInfo()" 
+        class="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white p-3 text-sm rounded-md transition duration-300">
+        Guardar Información Financiera
+    </button>
+</div>
+<script src="../js/main.js"></script>

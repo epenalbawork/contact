@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Contactos</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="flex justify-center items-center min-h-screen">
+    
+    <!-- Spinner siempre disponible -->
+    <div id="loadingSpinner" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden">
+        <div class="flex flex-col items-center">
+            <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 border-solid"></div>
+            <p class="text-white mt-2"> </p>
+        </div>
+    </div>
+
+    <!-- 📌 CONTENEDOR PRINCIPAL -->
+    <div class="container max-w-7xl mx-auto p-4 h-screen flex flex-col bg-gray-100 ">
+        
+        <!-- 📌 TABS -->
+        <div class="flex flex-col lg:flex-row items-left justify-self-start space-y-4 lg:space-y-0 lg:space-x-4">
+            <!-- Imagen alineada arriba en móvil y a la izquierda en desktop -->
+            <img src="img/logoCiber.png" alt="Logo" class="h-10 w-auto pl-4">
+        
+            <!-- Contenedor de los botones centrado -->
+            <div class="flex justify-center space-x-4">
+        
+                <button onclick="loadPage('formulario.html')" 
+                    class="tab-button active-tab px-3 py-1 text-xs sm:px-4 sm:py-2 ">
+                    Datos Personales
+                </button>
+                
+                <button onclick="loadPage('financiera.html')" 
+                    class="tab-button px-3 py-1 text-xs sm:px-4 sm:py-2 ">
+                    Información Financiera
+                </button>
+                <button onclick="loadPage('encuesta.html')" 
+                    class="tab-button px-3 py-1 text-xs sm:px-4 sm:py-2 ">
+                    Encuesta 
+                </button>
+            </div>
+        </div>
+        <!-- 📌 Contenido dinámico -->
+        <div id="content"  ></div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const stars = document.querySelectorAll(".star");
+            const ratingValue = document.getElementById("ratingValue");
+            let selectedRating = 0; // Almacena la calificación seleccionada
+        
+            stars.forEach((star, index) => {
+                star.addEventListener("mouseover", function () {
+                    highlightStars(index + 1);
+                });
+
+                star.addEventListener("mouseout", function () {
+                    highlightStars(selectedRating);
+                });
+
+                star.addEventListener("click", function () {
+                    selectedRating = index + 1; // Guarda la selección
+                    ratingValue.textContent = `${selectedRating}/5`; // Actualiza el número
+                    highlightStars(selectedRating);
+                });
+            });
+
+            function highlightStars(value) {
+                stars.forEach((star, index) => {
+                    if (index < value) {
+                        star.classList.add("selected");
+                    } else {
+                        star.classList.remove("selected");
+                    }
+                });
+            }
+
+            // 🎚️ Actualización de valores de sliders
+            const sliders = document.querySelectorAll(".slider");
+
+            sliders.forEach(slider => {
+                const output = document.getElementById(slider.id + "Value");
+                output.textContent = slider.value;
+
+                slider.addEventListener("input", function () {
+                    output.textContent = this.value;
+                });
+            });
+        });
+
+        function submitSurvey() {
+             let facilidad = document.getElementById("facilidad").value;
+            let personalizacion = document.getElementById("personalizacion").value;
+            let atencion = document.getElementById("atencion").value;
+            let comments = document.getElementById("comments").value || "Sin comentarios";
+
+            Swal.fire({
+                title: "¿Confirmar envío?",
+                html: `
+                     
+                    <p><b>Facilidad de uso:</b> ${facilidad}/10</p>
+                    <p><b>Capacidad de personalización:</b> ${personalizacion}/10</p>
+                    <p><b>Atención al cliente:</b> ${atencion}/10</p>
+                    <p><b>Comentarios:</b> ${comments}</p>
+                `,
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: "Enviar",
+                cancelButtonText: "Cancelar"
+            }).then(result => {
+                if (result.isConfirmed) {
+                    Swal.fire("¡Gracias!", "Tu encuesta ha sido enviada con éxito.", "success");
+                }
+            });
+        }
+    </script>
+</body>
+</html>

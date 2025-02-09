@@ -1,0 +1,116 @@
+<style>
+ 
+    .slider {
+        width: 50%;
+    }
+</style>
+ 
+
+
+<div id="infoEncuesta" class="bg-white p-6 rounded-lg shadow-md h-full mt-5">
+    <h1 class="text-lg font-semibold text-gray-800 mb-4 text-center">Encuesta de Satisfacción Bancaria</h1>
+    <hr class="mb-4">
+
+    <form id="surveyForm">
+        <!-- ⭐ ¿Cómo calificaría su experiencia general con el banco? -->
+      
+
+        <!-- 📊 Lista de servicios y evaluación -->
+        <div class="mb-4 bg-gray-100 p-4">
+            <label class="block text-sm font-medium text-gray-700 text-left">Califique los siguientes servicios:</label>
+            <div class="space-y-3 mt-2">
+                <div class="flex justify-between items-center">
+                    <span>Facilidad de uso</span>
+                    <input type="range" id="facilidad" min="1" max="10" class="slider">
+                </div>
+                <div class="flex justify-between items-center">
+                    <span>Capacidad de personalización</span>
+                    <input type="range" id="personalizacion" min="1" max="10" class="slider">
+                </div>
+                <div class="flex justify-between items-center">
+                    <span>Atención al cliente</span>
+                    <input type="range" id="atencion" min="1" max="10" class="slider">
+                </div>
+            </div>
+        </div>
+
+        <!-- ✅ ¿Qué servicios ha utilizado en los últimos 6 meses? -->
+<!-- Pregunta 1: Evaluación de servicios -->
+<div class="mb-6">
+    <label class="block text-sm font-medium text-gray-900 mb-2 ">
+        Por favor, califique su nivel de satisfacción con los siguientes aspectos:
+    </label>
+    <div class="overflow-x-auto">
+        <table class="w-full border-collapse border border-gray-300 text-sm">
+            <thead>
+                <tr class="bg-gray-100 text-gray-700">
+                    <th class="p-2 text-left">Servicio</th>
+                    <th class="p-2 text-center">Excelente</th>
+                    <th class="p-2 text-center">Bueno</th>
+                    <th class="p-2 text-center">Regular</th>
+                    <th class="p-2 text-center">Malo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-t">
+                    <td class="p-2">Atención al cliente</td>
+                    <td class="p-2 text-center"><input type="radio" name="atencion" value="excelente"></td>
+                    <td class="p-2 text-center"><input type="radio" name="atencion" value="bueno"></td>
+                    <td class="p-2 text-center"><input type="radio" name="atencion" value="regular"></td>
+                    <td class="p-2 text-center"><input type="radio" name="atencion" value="malo"></td>
+                </tr>
+                <tr class="border-t">
+                    <td class="p-2">Tiempo de espera</td>
+                    <td class="p-2 text-center"><input type="radio" name="tiempo" value="excelente"></td>
+                    <td class="p-2 text-center"><input type="radio" name="tiempo" value="bueno"></td>
+                    <td class="p-2 text-center"><input type="radio" name="tiempo" value="regular"></td>
+                    <td class="p-2 text-center"><input type="radio" name="tiempo" value="malo"></td>
+                </tr>
+                <tr class="border-t">
+                    <td class="p-2">Facilidad de uso de la banca en línea</td>
+                    <td class="p-2 text-center"><input type="radio" name="banca" value="excelente"></td>
+                    <td class="p-2 text-center"><input type="radio" name="banca" value="bueno"></td>
+                    <td class="p-2 text-center"><input type="radio" name="banca" value="regular"></td>
+                    <td class="p-2 text-center"><input type="radio" name="banca" value="malo"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+        
+<div class="mb-6">
+    <label class="block text-sm font-medium text-gray-700 mb-2">
+        ¿Qué servicios ha utilizado en los últimos 6 meses?
+    </label>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <label class="flex items-center space-x-2 bg-gray-100 p-3 rounded-lg shadow-sm">
+            <input type="checkbox" name="services" value="transferencias">
+            <span class="text-gray-700">Transferencias</span>
+        </label>
+        <label class="flex items-center space-x-2 bg-gray-100 p-3 rounded-lg shadow-sm">
+            <input type="checkbox" name="services" value="pagos">
+            <span class="text-gray-700">Pagos de Servicios</span>
+        </label>
+        <label class="flex items-center space-x-2 bg-gray-100 p-3 rounded-lg shadow-sm">
+            <input type="checkbox" name="services" value="prestamos">
+            <span class="text-gray-700">Solicitud de Préstamos</span>
+        </label>
+        <label class="flex items-center space-x-2 bg-gray-100 p-3 rounded-lg shadow-sm">
+            <input type="checkbox" name="services" value="cajeros">
+            <span class="text-gray-700">Uso de Cajeros Automáticos</span>
+        </label>
+    </div>
+</div>
+        <!-- 🗣️ Comentarios -->
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700">Comentarios o sugerencias</label>
+            <textarea id="comments" rows="3" class="w-full p-2 border rounded-md mt-1" placeholder="Déjanos tus comentarios"></textarea>
+        </div>
+
+        <button type="button" onclick="submitSurvey()"
+            class="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white p-2 text-sm rounded-md transition duration-300">
+            Enviar Encuesta
+        </button>
+    </form>
+</div>
+ 

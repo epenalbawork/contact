@@ -1,0 +1,201 @@
+/* styles.css */
+:root {
+    --primary: #004952;      /* Azul oscuro principal */
+    --secondary: #27455C;    /* Azul secundario */
+    --background: #F5F5F5;   /* Fondo gris claro */
+    --border-light: #2B2B2B14; /* Borde suave */
+    --hover-primary: #0049523D; /* Hover en primarios */
+    --accent: #FF8D6E;       /* Color de acción (naranja) */
+    --text-muted: #8CA7A2;   /* Texto secundario */
+    --background-files: #e8f0fe;
+}
+
+/* Configuración base */
+body {
+    background-color: var(--background);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilos generales */
+.bg-white {
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor del formulario */
+#contactForm {
+    background-color: white;
+    padding: 1px;
+    border-radius: 8px;
+    
+}
+
+/* Etiquetas */
+label {
+    color: var(--beige-brown);
+    font-weight: 600;
+}
+
+ 
+/* Botón de actualización */
+.bg-green-500 {
+    background-color: var(--primary) !important;
+}
+.bg-green-500:hover {
+    background-color: var(--hover-primary) !important;
+}
+
+/* Botón OCR */
+.bg-blue-500 {
+    background-color: var(--secondary) !important;
+}
+.bg-blue-500:hover {
+    background-color: var(--primary) !important;
+}
+
+/* Input Fields */
+input {
+    border: 1px solid var(--secondary);
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* Cambios de color cuando el input está activo */
+input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 5px var(--border-light);
+}
+
+/* Zona de arrastrar archivos */
+#dropzone {
+    background-color: var(--background);
+    border: 2px dashed var(--secondary);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    cursor: pointer;
+}
+
+/* Lista de archivos */
+#fileList {
+    list-style: none;
+    padding: 0;
+}
+
+#fileList li {
+    background-color: var(--background-files);
+    color: white;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Botón para eliminar archivos */
+#fileList li button {
+    background-color: var(--wine-dark);
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+/* Botón eliminar hover */
+#fileList li button:hover {
+    background-color: red;
+    color: var(--background-files);
+}
+
+
+/* Overlay del Spinner */
+#loadingSpinner {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    z-index: 9999; /* Asegurar que esté siempre adelante */
+}
+
+ 
+/* Spinner Animado */
+#loadingSpinner div {
+    animation: spin 1s linear infinite;
+}
+
+/* Animación de giro */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+ /* Sección OCR */
+.ocr-container {
+    background-color: var(--secondary);
+    color: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Overlay del Spinner */
+#loadingSpinner {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    z-index: 9999; /* Se asegura de que esté siempre al frente */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Mostrar el loading cuando se necesite */
+.loading {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Spinner Animado */
+#loadingSpinner div {
+    animation: spin 1s linear infinite;
+}
+
+/* Animación de giro */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 🔹 Estilos para los botones de tabs */
+.tab-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    background-color: #e5e7eb;
+    color: #333;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.tab-button:hover {
+    background-color: #d1d5db;
+}
+
+/* 🔹 Estilo cuando un tab está activo */
+.active-tab {
+    background-color: #4F46E5;
+    color: white;
+}

@@ -1,0 +1,125 @@
+ 
+<div id="infoPersona"  class="flex flex-col lg:flex-row gap-6 p-2 lg:p-6  bg-gray-100 ">
+    <!-- 📌 Sección Principal - Formulario -->
+    <div class="flex-1 bg-white p-2 lg:p-6  rounded-lg shadow-lg">
+        <h1 class="text-lg font-semibold text-gray-800 mb-4">Información Personal</h1>
+        <hr class="mb-4">
+
+        <form id="contactForm" class="w-full">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                <!-- Nombre -->
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700">Nombre</label>
+                    <input type="text" id="name" class="w-full p-2 text-sm border rounded-md">
+                    <input type="text" id="contactId" class="hidden">
+                </div>
+
+                <!-- Apellido -->
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700">Apellido</label>
+                    <input type="text" id="surname" class="w-full p-2 text-sm border rounded-md">
+                </div>
+
+                <!-- Segundo Nombre -->
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700">Segundo Nombre</label>
+                    <input type="text" id="middleName" class="w-full p-2 text-sm border rounded-md">
+                </div>
+
+                <!-- Correo Electrónico -->
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                    <input type="email" id="email" readonly class="w-full p-2 text-sm border rounded-md">
+                </div>
+
+                <!-- Teléfono -->
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700">Teléfono</label>
+                    <input type="text" id="phone" class="w-full p-2 text-sm border rounded-md">
+                </div>
+
+                <!-- Móvil -->
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700">Móvil</label>
+                    <input type="text" id="mobilePhone" class="w-full p-2 text-sm border rounded-md">
+                </div>
+
+                <!-- Dirección -->
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700">Dirección</label>
+                    <input type="text" id="address" class="w-full p-2 text-sm border rounded-md">
+                </div>
+
+                <!-- Puesto de Trabajo -->
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700">Puesto de Trabajo</label>
+                    <input type="text" id="jobTitle" class="w-full p-2 text-sm border rounded-md">
+                </div>
+
+                <!-- Fecha de Nacimiento -->
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700">Fecha de Nacimiento</label>
+                    <input type="date" id="birthDate" class="w-full p-2 text-sm border rounded-md">
+                </div>
+
+                <!-- Edad -->
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700">Edad</label>
+                    <input type="number" id="age" class="w-full p-2 text-sm border rounded-md">
+                </div>
+
+                <!-- Cédula -->
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700">Cédula</label>
+                    <input type="text" id="inn" class="w-full p-2 text-sm border rounded-md">
+                </div>
+
+                <!-- Lugar de Nacimiento -->
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700">Lugar de Nacimiento</label>
+                    <input type="text" id="placeOfBirth" class="w-full p-2 text-sm border rounded-md">
+                </div>
+            </div>
+
+            <!-- Adjuntar Documentos -->
+            <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-700">Adjuntar Documentos</label>
+                <div id="dropzone" class="w-full p-6 border-2 border-dashed border-gray-300 rounded-md text-center cursor-pointer">
+                    <p class="text-gray-500">Arrastra archivos aquí o haz clic para adjuntar</p>
+                    <input type="file" id="fileInput" multiple class="hidden">
+                </div>
+                <ul id="fileList" class="mt-4 space-y-2"></ul>
+            </div>
+
+            <button type="button" onclick="confirmUpdateContact()" 
+                class="mt-4 w-full bg-green-500 hover:bg-green-600 text-white p-2 text-sm rounded-md transition duration-300">
+                Actualizar y Subir Archivos
+            </button>
+        </form>
+    </div>
+
+    <!-- 📌 Sección OCR -->
+    <div class="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center">
+           
+        <div class="text-blue-500 text-5xl mt-2">🚀</div>
+        <h2 class="text-md font-semibold text-gray-800">Adjunta tu cédula para extraer la información más rápido <span class="cursor-pointer text-blue-500 mt-2" onclick="showOcrInfo()">ℹ️</span></h2>
+
+       
+
+     
+        <!-- Botón para adjuntar cédula -->
+        <div class="mt-4 w-full">
+            <input type="file" id="ocrFile" class="hidden" accept="image/*">
+            <label for="ocrFile"
+                class="block w-full text-center bg-gray-200 hover:bg-gray-300 text-gray-700 p-2 rounded-md cursor-pointer">
+                Adjuntar Identificación
+            </label>
+        </div>
+
+        <!-- Botón para iniciar OCR -->
+        <button type="button" onclick="processOcr()"
+            class="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white p-2 text-sm rounded-md transition duration-300">
+            Realizar OCR
+        </button>
+    </div>
+</div>
